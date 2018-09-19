@@ -12,7 +12,7 @@ Example Usage: `perl list-tickets.pl -query`
 ```
 Options for output:
    -query   Outputs a JIRA Query JQL for copy/pasting into the 'Advanced' query box.
-   -link    Outputs a JIRA Query JQL for copy/pasting into the 'Advanced' query box.
+   -link    Outputs a link to a JIRA Query for copy/pasting into a web-browser.
    -list    Outputs a flat list of tickets, one per line.
 ```
 
