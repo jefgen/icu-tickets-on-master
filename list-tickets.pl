@@ -59,6 +59,7 @@ sub parseArgs
     }
 }
 
+# Poor man's URI encoding, so as to avoid the need for CPAN.
 sub uri_encode
 {
     my $string = shift;
@@ -140,8 +141,8 @@ sub parseGitLogOutput
         
         if ($title eq '')
         {
-            print 'Error: No commit title for: \''. $sha1 ."'\n";
-            continue;
+            print "Error: No commit title for: '$sha1' \n";
+            next;
         }
         
         my @tickets = findTickets($title);
@@ -162,16 +163,16 @@ sub parseGitLogOutput
                 
                 if (scalar(@tickets) == 0)
                 {
-                    print 'Warning: Could not find a ticket number in the title or commit body message! \''. $line ."'\n";
+                    print "Warning: Could not find a ticket number in the title or commit body message! '$line' \n";
                 }
                 else
                 {
-                    # print 'Found ticket number(s) in the commit body message. \''. $line ."'\n";
+                    # print "Found ticket number(s) in the commit body message ('$line') \n";
                 }
             }
             else
             {
-                print 'Warning: Could not find any tickets for commit: \''. $line ."'\n";
+                print "Warning: Could not find any tickets for commit: '$line' \n";
             }
         }
         
@@ -186,9 +187,9 @@ sub parseGitLogOutput
 
 sub outputJiraQuery
 {
-    # JIRA Query syntax looks like this:
+    # JIRA JQL Query syntax looks like this:
     #  ' project = ICU AND issuekey IN ("ICU-7270", "ICU-8151", "ICU-8966") '
-    
+
     my $jiraQuery = 'project = ICU AND issuekey IN ("'. join('", "', (keys %tickets)) . '")';
     print "\n";
     print "JIRA Query for pasting into the 'Advanced' search box: \n\n";

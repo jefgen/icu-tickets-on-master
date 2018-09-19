@@ -15,3 +15,9 @@ Options for output:
    -link    Outputs a JIRA Query JQL for copy/pasting into the 'Advanced' query box.
    -list    Outputs a flat list of tickets, one per line.
 ```
+
+### LICENSE
+
+- Copyright (C) 2018 and later: Unicode, Inc. and others.
+- License & terms of use: http://www.unicode.org/copyright.html
+- see [LICENSE](LICENSE.txt)
